@@ -1,7 +1,7 @@
 resource "aws_ecs_cluster" "cluster-01" {
   name = format("%s-cluster-01", var.project_name)
   setting {
-    name = "containerInsights"
+    name  = "containerInsights"
     value = "enabled"
   }
 }
