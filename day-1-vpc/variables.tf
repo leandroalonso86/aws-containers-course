@@ -1,7 +1,3 @@
-variable "project_name" {
-  default = "containers-course"
-}
+variable "project_name" {}
 
-variable "region" {
-  default = "us-east-1"
-}
+variable "region" {}
