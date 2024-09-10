@@ -28,3 +28,18 @@ resource "aws_autoscaling_group" "ecs-cluster" {
     propagate_at_launch = true
   }
 }
+
+resource "aws_ecs_capacity_provider" "on-demand" {
+  name = format("%s_ecs_cp", var.project_name)
+  
+  auto_scaling_group_provider {
+    auto_scaling_group_arn = aws_autoscaling_group.ecs-cluster.arn
+
+    managed_scaling {
+      maximum_scaling_step_size = 10
+      minimum_scaling_step_size = 1
+      status = "ENABLED"
+      target_capacity = 90
+    }
+  }
+}

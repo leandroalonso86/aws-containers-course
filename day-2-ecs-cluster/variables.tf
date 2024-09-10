@@ -41,3 +41,9 @@ variable "cluster_min_size" {}
 variable "cluster_max_size" {}
 
 variable "cluster_desired_size" {}
+
+variable "cluster_spot_min_size" {}
+
+variable "cluster_spot_max_size" {}
+
+variable "cluster_spot_desired_size" {}
