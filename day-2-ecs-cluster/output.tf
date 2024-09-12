@@ -1,5 +1,5 @@
 output "load-balancer-dns" {
-  value = aws_ssm_parameter.lb-dns.insecure_value
+  value = aws_lb.ecs-lb.name
 }
 
 output "load-balancer-arn" {
