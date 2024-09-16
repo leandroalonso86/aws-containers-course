@@ -1,5 +1,5 @@
 output "load-balancer-dns" {
-  value = aws_lb.ecs-lb.name
+  value = aws_lb.ecs-lb.dns_name
 }
 
 output "load-balancer-arn" {
