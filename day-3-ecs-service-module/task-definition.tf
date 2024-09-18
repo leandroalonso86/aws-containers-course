@@ -1,5 +1,5 @@
-resource "aws_ecs_task_definition" "ecs_task_01" {
-  family = format("%s-%s-td", var.cluster_name, var.service_name)
+resource "aws_ecs_task_definition" "chip" {
+  family = format("%s-%s-task", var.cluster_name, var.service_name)
 
   network_mode = "awsvpc"
 
@@ -20,20 +20,20 @@ resource "aws_ecs_task_definition" "ecs_task_01" {
 
       essential = true
 
-      portMapping = [
+      portMappings = [
         {
           containerPort = var.service_port
           hostPort      = var.service_port
-          protocol      = "TCP"
+          protocol      = "tcp"
         }
       ]
 
       logConfiguration = {
-        logDriver = "awsLogs"
-        option = {
-          awslogs-group     = aws_cloudwatch_log_group.main.id
-          awslogs-region    = var.region
-          aws-stream-prefix = var.service_name
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = aws_cloudwatch_log_group.main.id
+          awslogs-region        = var.region
+          awslogs-stream-prefix = var.service_name
         }
       }
 
